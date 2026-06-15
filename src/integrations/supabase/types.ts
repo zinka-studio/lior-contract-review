@@ -14,16 +14,232 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      faqs: {
+        Row: {
+          answer: string
+          enabled: boolean
+          id: string
+          question: string
+          sort_order: number
+        }
+        Insert: {
+          answer?: string
+          enabled?: boolean
+          id?: string
+          question: string
+          sort_order?: number
+        }
+        Update: {
+          answer?: string
+          enabled?: boolean
+          id?: string
+          question?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          created_at: string
+          email: string
+          file_name: string | null
+          file_path: string | null
+          full_name: string
+          id: string
+          internal_notes: string | null
+          notes: string | null
+          phone: string
+          status: Database["public"]["Enums"]["lead_status"]
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          file_name?: string | null
+          file_path?: string | null
+          full_name: string
+          id?: string
+          internal_notes?: string | null
+          notes?: string | null
+          phone: string
+          status?: Database["public"]["Enums"]["lead_status"]
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          file_name?: string | null
+          file_path?: string | null
+          full_name?: string
+          id?: string
+          internal_notes?: string | null
+          notes?: string | null
+          phone?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+        }
+        Relationships: []
+      }
+      plans: {
+        Row: {
+          created_at: string
+          cta_label: string | null
+          cta_url: string | null
+          description: string
+          enabled: boolean
+          id: string
+          price: string | null
+          recommended: boolean
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          description?: string
+          enabled?: boolean
+          id?: string
+          price?: string | null
+          recommended?: boolean
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          description?: string
+          enabled?: boolean
+          id?: string
+          price?: string | null
+          recommended?: boolean
+          sort_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      process_steps: {
+        Row: {
+          description: string
+          enabled: boolean
+          id: string
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          description?: string
+          enabled?: boolean
+          id?: string
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          description?: string
+          enabled?: boolean
+          id?: string
+          sort_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      site_content: {
+        Row: {
+          data: Json
+          key: string
+          updated_at: string
+        }
+        Insert: {
+          data?: Json
+          key: string
+          updated_at?: string
+        }
+        Update: {
+          data?: Json
+          key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          description: string
+          enabled: boolean
+          id: string
+          sort_order: number
+          thumbnail_url: string | null
+          title: string
+          url: string
+        }
+        Insert: {
+          description?: string
+          enabled?: boolean
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title: string
+          url?: string
+        }
+        Update: {
+          description?: string
+          enabled?: boolean
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      lead_status: "new" | "reviewing" | "quoted" | "won" | "irrelevant"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +366,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      lead_status: ["new", "reviewing", "quoted", "won", "irrelevant"],
+    },
   },
 } as const
