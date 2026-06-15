@@ -57,6 +57,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "primary-hover": "hsl(var(--primary-hover))",
+        "accent-soft": "hsl(var(--accent-soft))",
+      },
+      fontFamily: {
+        sans: ['Assistant', 'Heebo', 'system-ui', 'sans-serif'],
+        display: ['Heebo', 'Assistant', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        card: 'var(--shadow-card)',
+        elev: 'var(--shadow-elev)',
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-cta': 'var(--gradient-cta)',
       },
       borderRadius: {
         lg: "var(--radius)",
