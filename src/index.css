@@ -4,52 +4,84 @@
 
 @layer base {
   :root {
-    /* Premium legal palette: cream background, deep forest green primary, bronze/gold accent */
-    --background: 40 33% 97%;          /* warm cream */
-    --foreground: 160 25% 12%;         /* near-black with green undertone */
+    /* ── OKLCH palette derived from LIOR-06.svg logo ──────────
+       Logo navy:  #181C2E (oklch 12% 0.040 263)
+                   #242A3A (oklch 17% 0.030 260)
+       Logo gold:  gradient #BD9A53 → #FFD98C → #D7B267
+                   mid-gold anchor: #D4AB5A (oklch 71% 0.112 74)
+       Buttons use the toned-down range (oklch 62-70%) not the
+       bright highlight end of the gradient.
+    ─────────────────────────────────────────────────────────── */
 
-    --card: 0 0% 100%;
-    --card-foreground: 160 25% 12%;
+    /* Surfaces — warm cream tinted toward logo gold hue */
+    --background:         oklch(97.4% 0.006 78);
+    --foreground:         oklch(12%   0.040 263);  /* logo #181C2E */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 160 25% 12%;
+    --card:               oklch(99%   0.003 78);
+    --card-foreground:    oklch(12%   0.040 263);
 
-    --primary: 158 38% 18%;            /* deep forest green */
-    --primary-foreground: 40 33% 97%;
-    --primary-hover: 158 38% 24%;
+    --popover:            oklch(99%   0.003 78);
+    --popover-foreground: oklch(12%   0.040 263);
 
-    --secondary: 40 25% 92%;           /* muted cream */
-    --secondary-foreground: 160 25% 14%;
+    /* Primary = logo dark navy #181C2E */
+    --primary:            oklch(12%   0.040 263);
+    --primary-foreground: oklch(97.4% 0.006 78);
+    --primary-hover:      oklch(17%   0.030 260);  /* logo #242A3A */
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 160 10% 38%;
+    /* Secondary = logo medium navy #242A3A */
+    --secondary:          oklch(93%   0.006 78);
+    --secondary-foreground: oklch(17% 0.030 260);
 
-    --accent: 36 45% 48%;              /* bronze/gold */
-    --accent-foreground: 0 0% 100%;
-    --accent-soft: 36 55% 92%;
+    --muted:              oklch(95%   0.005 78);
+    --muted-foreground:   oklch(47%   0.014 260);
 
-    --destructive: 0 70% 45%;
-    --destructive-foreground: 0 0% 100%;
+    /* Accent = toned-down logo gold (mid-gradient, not peak highlight) */
+    --accent:             oklch(68%   0.108 74);   /* ~#D4AB5A range */
+    --accent-foreground:  oklch(99%   0.003 78);
+    --accent-soft:        oklch(94%   0.026 78);
 
-    --border: 40 18% 86%;
-    --input: 40 18% 88%;
-    --ring: 158 38% 30%;
+    --destructive:        oklch(48%   0.180 28);
+    --destructive-foreground: oklch(99% 0.002 0);
 
-    --radius: 0.5rem;
+    --border:             oklch(89%   0.008 260);
+    --input:              oklch(91%   0.007 260);
+    --ring:               oklch(68%   0.108 74);
 
-    --shadow-card: 0 1px 3px hsl(160 25% 12% / 0.04), 0 8px 24px -8px hsl(160 25% 12% / 0.08);
-    --shadow-elev: 0 4px 16px hsl(160 25% 12% / 0.06), 0 24px 48px -16px hsl(160 25% 12% / 0.14);
-    --gradient-hero: linear-gradient(135deg, hsl(40 33% 97%) 0%, hsl(40 30% 94%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(158 38% 18%) 0%, hsl(158 42% 24%) 100%);
+    --radius: 0.625rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 160 25% 12%;
-    --sidebar-primary: 158 38% 18%;
-    --sidebar-primary-foreground: 40 33% 97%;
-    --sidebar-accent: 40 25% 94%;
-    --sidebar-accent-foreground: 160 25% 12%;
-    --sidebar-border: 40 18% 88%;
-    --sidebar-ring: 158 38% 30%;
+    /* Shadows */
+    --shadow-card: 0 1px 4px oklch(12% 0.040 263 / 0.05),
+                   0 8px 32px -8px oklch(12% 0.040 263 / 0.08);
+    --shadow-elev: 0 4px 24px oklch(12% 0.040 263 / 0.08),
+                   0 32px 56px -16px oklch(12% 0.040 263 / 0.14);
+    --shadow-gold: 0 8px 32px oklch(68% 0.108 74 / 0.30);
+
+    /* Gradients */
+    /* Hero bg: the logo's exact dark navy tones */
+    --gradient-hero: linear-gradient(
+      160deg,
+      oklch(9%  0.040 265) 0%,
+      oklch(13% 0.038 262) 55%,
+      oklch(11% 0.035 258) 100%
+    );
+    /* CTA section: logo navy */
+    --gradient-cta:  linear-gradient(135deg, oklch(12% 0.040 263) 0%, oklch(17% 0.030 260) 100%);
+    /* Buttons: toned-down gold — stops from logo gradient mid-range only */
+    --gradient-gold: linear-gradient(
+      135deg,
+      oklch(62%  0.105 70)  0%,   /* ~#C9A561 */
+      oklch(72%  0.112 76) 100%   /* ~#D7B267 */
+    );
+
+    /* Sidebar (shadcn compat) */
+    --sidebar-background:         oklch(99%  0.003 78);
+    --sidebar-foreground:         oklch(12%  0.040 263);
+    --sidebar-primary:            oklch(12%  0.040 263);
+    --sidebar-primary-foreground: oklch(97.4% 0.006 78);
+    --sidebar-accent:             oklch(93%  0.006 78);
+    --sidebar-accent-foreground:  oklch(12%  0.040 263);
+    --sidebar-border:             oklch(89%  0.008 260);
+    --sidebar-ring:               oklch(68%  0.108 74);
   }
 
   * {
@@ -58,33 +90,226 @@
 
   html {
     direction: rtl;
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Assistant', 'Heebo', system-ui, sans-serif;
-    font-feature-settings: "kern", "liga";
+    font-family: 'Rubik', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Heebo', 'Assistant', system-ui, sans-serif;
+    font-family: 'Frank Ruhl Libre', Georgia, serif;
     @apply tracking-tight;
+  }
+
+  /* Accessible focus ring — gold tint, not browser blue */
+  :focus-visible {
+    outline: 2px solid oklch(64% 0.118 72);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
+/* ─── Keyframes ──────────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse-gold-shadow {
+  0%, 100% { box-shadow: 0 0 0 0   oklch(64% 0.118 72 / 0.45); }
+  50%       { box-shadow: 0 0 0 14px oklch(64% 0.118 72 / 0); }
+}
+@keyframes hero-pan {
+  from { transform: scale(1.04) translateX(0px); }
+  to   { transform: scale(1.10) translateX(-12px); }
+}
+@keyframes bounce-dot {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ─── Animation helpers ──────────────────────────────── */
+.animate-fade-in-up  { animation: fade-in-up  0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-fade-in     { animation: fade-in     0.55s ease both; }
+.animate-scale-in    { animation: scale-in    0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-float       { animation: float       4.5s ease-in-out infinite; }
+.animate-pulse-gold  { animation: pulse-gold-shadow 2.8s ease-in-out infinite; }
+.animate-hero-pan    { animation: hero-pan    14s ease-in-out infinite alternate; }
+.animate-bounce-dot  { animation: bounce-dot  1.4s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-600 { animation-delay: 0.60s; }
+.delay-700 { animation-delay: 0.70s; }
+
+/* ─── Scroll-reveal ──────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.7s cubic-bezier(0.22,1,0.36,1),
+    transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(28px);        /* RTL: slides from left edge */
+  transition:
+    opacity  0.7s cubic-bezier(0.22,1,0.36,1),
+    transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(-28px);       /* RTL: slides from right edge */
+  transition:
+    opacity  0.7s cubic-bezier(0.22,1,0.36,1),
+    transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity  0.6s cubic-bezier(0.22,1,0.36,1),
+    transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Reduced motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    transition: opacity 0.2s ease;
+    transform: none !important;
+  }
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-scale-in {
+    animation-duration: 0.15s !important;
+  }
+  .animate-float,
+  .animate-hero-pan,
+  .animate-bounce-dot {
+    animation: none !important;
+  }
+  .animate-pulse-gold {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ─── Glassmorphism — used exactly twice ─────────────── */
+/* 1. Hero floating stats card (dark hero bg) */
+.glass-hero-card {
+  background: oklch(10% 0.030 230 / 0.70);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid oklch(100% 0 0 / 0.10);
+}
+/* 2. Service photo floating badge (light bg) */
+.glass-badge {
+  background: oklch(99% 0.003 80 / 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid oklch(99% 0 0 / 0.50);
+  box-shadow: var(--shadow-elev);
+}
+
+/* ─── Hero ───────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: oklch(9% 0.040 265);  /* logo dark navy */
+}
+
+/*
+  RTL gradient: text column is on the RIGHT (column 1 in RTL grid).
+  Overlay darkest on right where text lives, lighter on left for image.
+*/
+.hero-overlay {
+  background: linear-gradient(
+    to left,
+    oklch(8%  0.040 265 / 0.96) 0%,
+    oklch(10% 0.038 263 / 0.82) 40%,
+    oklch(11% 0.035 260 / 0.46) 100%
+  );
+}
+
+/* ─── Components ─────────────────────────────────────── */
 @layer components {
   .container-narrow {
-    @apply container max-w-6xl;
+    @apply container max-w-6xl px-5 md:px-8;
   }
+
   .section {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
+
+  /*
+    Eyebrow label.
+    RTL note: we use a trailing element (after-line via span, not ::before pseudo)
+    to avoid content appearing on the wrong side in RTL context.
+    Implementation in JSX uses an explicit <span> for the decorative line.
+  */
   .eyebrow {
-    @apply inline-block text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-accent;
+    @apply inline-flex items-center gap-2
+           text-[11px] font-bold uppercase tracking-[0.22em]
+           text-accent;
   }
+
   .card-elev {
-    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-card)];
+    @apply bg-card border border-border rounded-xl
+           shadow-[var(--shadow-card)]
+           transition-all duration-300
+           hover:shadow-[var(--shadow-elev)] hover:-translate-y-0.5;
+  }
+
+  .card-luxury {
+    @apply bg-card rounded-2xl border border-border/60
+           shadow-[var(--shadow-elev)]
+           transition-all duration-300
+           hover:shadow-[0_24px_64px_oklch(64%_0.118_72_/_0.12)]
+           hover:-translate-y-1;
+  }
+
+  /*
+    Gold section accent line.
+    RTL note: placed with a <div> in JSX (not ::before) so it appears
+    on the correct side regardless of writing direction.
+  */
+  .gold-accent-line {
+    @apply block w-12 h-[3px] rounded-full mb-4;
+    background: var(--gradient-gold);
+  }
+
+  /* Process section — logo dark navy */
+  .process-section {
+    background: oklch(12% 0.040 263);   /* logo #181C2E */
+    color: oklch(97.4% 0.006 78);
   }
 }
