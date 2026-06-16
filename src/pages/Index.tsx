@@ -132,9 +132,12 @@ function Reveal({
 }
 
 /* ─────────────────── Images ─────────────────── */
-const HERO_IMAGE    = "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=85";
-const SERVICE_IMAGE = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80";
-const CTA_IMAGE     = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=75";
+// Hero: luxury apartment tower at dusk — cinematic residential high-rise
+const HERO_IMAGE    = "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=85";
+// Service: modern apartment interior — what buyers are actually purchasing
+const SERVICE_IMAGE = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80";
+// CTA: upscale house exterior — keeps the mix of housing types
+const CTA_IMAGE     = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=75";
 
 /* ═══════════════════════════════════════════════
    PAGE
