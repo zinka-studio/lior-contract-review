@@ -579,13 +579,13 @@ function Plans({ c, plans }: { c: SiteContent; plans: Plan[] }) {
               <div
                 className={`relative rounded-2xl p-7 flex flex-col h-full transition-all duration-300 ${
                   p.recommended
-                    ? "shadow-[0_20px_60px_oklch(29%_0.082_155_/_0.28)]"
+                    ? "shadow-[0_20px_60px_oklch(12%_0.040_263_/_0.40)]"
                     : "card-luxury"
                 }`}
                 style={p.recommended ? {
-                  background: "oklch(29% 0.082 155)",
-                  color: "oklch(97% 0.005 75)",
-                  outline: "2px solid oklch(64% 0.118 72)",
+                  background: "oklch(12% 0.040 263)",
+                  color: "oklch(97.4% 0.006 78)",
+                  outline: "2px solid oklch(68% 0.108 74)",
                   outlineOffset: "0px",
                 } : undefined}
               >
@@ -598,7 +598,7 @@ function Plans({ c, plans }: { c: SiteContent; plans: Plan[] }) {
                   </span>
                 )}
 
-                <p className="text-[11px] font-bold uppercase tracking-widest mb-2 text-accent">
+                <p className={`text-[11px] font-bold uppercase tracking-widest mb-2 ${p.recommended ? "text-[oklch(68%_0.108_74)]" : "text-accent"}`}>
                   מסלול {i + 1}
                 </p>
                 <h3 className="text-xl font-bold">{p.title}</h3>
@@ -944,7 +944,7 @@ function Faqs({ c, faqs }: { c: SiteContent; faqs: Faq[] }) {
 
   return (
     <section id="faq" className="section">
-      <div className="container-narrow max-w-3xl">
+      <div className="container-narrow">
         <Reveal className="text-center mb-12">
           <Eyebrow className="justify-center">שאלות נפוצות</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold mt-4">{t.title || "שאלות נפוצות"}</h2>
